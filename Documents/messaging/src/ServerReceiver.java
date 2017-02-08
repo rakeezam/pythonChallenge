@@ -16,36 +16,31 @@ public class ServerReceiver extends Thread {
     try {
       while (check) {
     	String command = myClient.readLine();
-        String username = myClient.readLine(); // Matches CCCCC in ClientSender.java
-        String text = myClient.readLine();      // Matches DDDDD in ClientSender.java
         
         if(command.equals("register")) {
-        	clientTable.registerUsername(text);
-        	System.out.println("Has registered");
+        	String username = myClient.readLine();
+        	clientTable.registerUsername(username);
+        	System.out.println("User is registered");
         	//clientTable.registerUser(text)//adds to array in clientTable
         	//print its registers
         	//isRegistered is in boolean in clientTable class
         }
         else if(command.equals("login")) {
-        	if(clientTable.isRegistered()) {
-        		clientTable.add(text);
-        	}
+        	String username = myClient.readLine();
+        	clientTable.LoggedIn(username);
+        	System.out.println("User is logged in");
        
-        	//if isREgistered, add text
         }
-        else if(command.equals("logout")) {
-        	if(clientTable.isLoggedIn()) {
-        		
-        	}
-        	
-        }
-        else
-        	System.out.println("There is no registered user, try again");
-        	return;
+        
+        //else
+        	//System.out.println("There is no registered user, try again");
+        	//return;
         
         //else its not register 
     
-        if(command.equals("msg")){
+        else if(command.equals("msg")){
+        	String username = myClient.readLine();
+        	String text = myClient.readLine();
         	if (command != null && text != null) {
                 Message msg = new Message(myClientsName, text);
                 MessageQueue commandQueue = clientTable.getQueue(command); // Matches EEEER in ServerSender.java
@@ -53,11 +48,17 @@ public class ServerReceiver extends Thread {
                   commandQueue.offer(msg);
                 else
                   Report.error("Message for unexistent client "
-                               + clientID + ": " + text);
+                               + command + ": " + text);
             }
         
         }
-        else if(username.equals("quit")) {
+        else if(command.equals("logout")) {
+        	String username = myClient.readLine();
+        	clientTable.LoggedOut(username);
+        	System.out.println("User is logged out.");
+    
+        }
+        else if(command.equals("quit")) {
         	Message msg = new Message(myClientsName, "quit");
             MessageQueue commandQueue = clientTable.getQueue(myClientsName);
         	if (commandQueue != null)

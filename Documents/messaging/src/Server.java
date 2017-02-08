@@ -29,9 +29,12 @@ public class Server {
         // This is so that we can use readLine():
         BufferedReader fromClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         // We ask the client what its name is:
-        String clientName = fromClient.readLine(); // Matches BBBBB in Client.java
+        String iD = null;
+        String clientName = iD;
+        //toClient.println(); // how to i actually assign function "toClient"
         Report.behaviour(clientName + " connected");
         
+        //where does clientName come frome
         
         // We add the client to the table:
         clientTable.add(clientName);

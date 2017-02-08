@@ -27,10 +27,12 @@ public class ClientSender extends Thread {
     	  
     	  if(command.equals("register")) {
     		  server.println(username);
+    		  server.println(text);
     		  System.out.println(username);
     	  }
     	  else if(command.equals("login")) {
     		  server.println(username);
+    		  server.println(text);
     	  }
     	  else if(command.equals("msg")) {
     		  server.println(username);

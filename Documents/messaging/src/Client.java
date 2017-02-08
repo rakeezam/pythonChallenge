@@ -39,11 +39,17 @@ class Client {
       Report.errorAndGiveUp("The server doesn't seem to be running " + e.getMessage());
     }
     // Tell the server what my nickname is:
-    int iD = Integer.parseInt(fromServer.readLine());//wait for sever to send what its called //change everything to String now
+    String iD=null;
+	try {
+		iD = fromServer.readLine();
+	} catch (IOException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}//wait for server to send what its called //change everything to String now
     toServer.println(iD); // Matches BBBBB in Server.java
     
-    // Create two client threads of a diferent nature:
-    ClientSender sender = new ClientSender(String.valueOf(iD),toServer);//clientID able without a username/nickname, this is recognised by Server
+    // Create two client threads of a different nature:
+    ClientSender sender = new ClientSender(iD,toServer);//clientID able without a username/nickname, this is recognised by Server
     ClientReceiver receiver = new ClientReceiver(fromServer);
     // Run them in parallel:
     sender.start();

@@ -16,6 +16,7 @@ import About from './components/About';
 import {Shop} from './components/shop/Shop';
 import Contact from './components/Contact';
 import Error from './components/Error';
+import Product from "./components/shop/Product";
 // import { render } from "react-dom";
 
 function App() {
@@ -53,6 +54,9 @@ function App() {
             </Route>
             <Route path="/contact-us">
               <Contact />
+            </Route>
+            <Route path="/product/:id">
+              <Product />
             </Route>
             <Route component={Error}/>
 

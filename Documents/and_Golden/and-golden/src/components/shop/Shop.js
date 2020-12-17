@@ -1,4 +1,4 @@
-import React from "react"; //, { useEffect, useState }
+import React, {useState} from "react"; //, { useEffect, useState }
 import {
     BrowserRouter as Router,
     Switch,
@@ -73,7 +73,7 @@ function Shop() {
 }
 
 function GetProduct() {
-    let [responseData, setResponseData] = React.useState('');
+    let [responseData, setResponseData] = useState('');
     
 
     axios({

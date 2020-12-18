@@ -11,52 +11,74 @@ function BuyNowButton(props) {
   )
 }
 
-
 function ShoppingCart() {
 
+    if (localStorage.getItem('shoppingCart') === null) {
+      return <p>Shopping cart empty</p>
+    }else{
+      let shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
 
-    let shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
+      let shopArr = shoppingCart.map(function(productCart){
+        return productCart._id;
+      })
+      console.log(shopArr);
 
-    ;
+      let isDuplicate = shopArr.some(function(product, idx) {
+        return shopArr.indexOf(product) !== idx;
+      })
 
-    function NotSure() {
-        // let [shoppingCart, setQuant] = useState(shoppingCart)
+      console.log(isDuplicate);
 
-        let result = shoppingCart.map(productCart=> {
-                          if (productCart._id === productCart._id) {
-                            productCart.quantity++ 
-                          }else{
-                            productCart.quantity = 1;
-                          }
-                      })
-        console.log(result);
-        
+      if(isDuplicate === true) {
+        shoppingCart.map(function(productCart){
+          return productCart.quantity++;
+        })
+      }
 
-    }
-    NotSure();
+      console.log(shoppingCart);
 
+      return (
+        <div className="ShoppingCart">
+          <h2> Shopping Cart</h2>
 
-    return (
-      <div className="ShoppingCart">
-        <h2> Shopping Cart</h2>
-
-        <div className ="products">
-          {shoppingCart.map((productCart, idx)=> (
-            <div className="product" key={idx}>
-            <ul>
-              <li>{productCart.name}</li>
-              <li>Stock: {productCart.stock}</li>
-              <li>£{(productCart.price / 100).toFixed(2)}</li>
-            </ul>
-            </div>
-          ))}
-        </div>
-        <BuyNowButton />
-      </div> 
-    );
+          <div className ="products">
+            {shoppingCart.map((productCart, idx)=> (
+              <div className="product" key={idx}>
+              <ul>
+                <li><img src={"http://localhost:5000/images/" + productCart._id + ".jpeg"} alt={productCart.name + "image"} /></li>
+                <li>{productCart.name}</li>
+                <li>Stock: {productCart.stock}</li>
+                <li>£{(productCart.price / 100).toFixed(2)}</li>
+              </ul>
+              </div>
+            ))}
+          </div>
+          <BuyNowButton />
+        </div> 
+      );
+    } 
   }
 
 export default ShoppingCart;
+
+    // function NotSure() {
+    //     // let [shoppingCart, setQuant] = useState(shoppingCart)
+
+    //     let result = shoppingCart.map(productCart=> {
+    //                       if (productCart._id === productCart._id) {
+    //                         productCart.quantity++ 
+    //                       }else{
+    //                         productCart.quantity = 1;
+    //                       }
+    //                   })
+    //     console.log(result);
+        
+
+    // }
+    // NotSure();
+
+
+
 
 // let url = "http://localhost:5000/";
 // const [product, setResponseData] = useState({});

@@ -1,4 +1,4 @@
-//import logo from './logo.svg';
+
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -8,7 +8,6 @@ import {
   Link
 } from "react-router-dom";
 import './App.css';
-// import Axios from "axios";
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
@@ -18,7 +17,7 @@ import Contact from './components/Contact';
 import Error from './components/Error';
 import Product from "./components/shop/Product";
 import ShoppingCart from "./components/shop/ShoppingCart";
-// import { render } from "react-dom";
+
 
 function App() {
 

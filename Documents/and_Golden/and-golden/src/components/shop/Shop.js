@@ -35,18 +35,21 @@ function Shop() {
       })
   }, [products.data])
 
-  //let productListing = responseData[0] && responseData[0].name
-  // let {responseData.name} = useParams();
-
   return (
     <div>
-      <ul>
-        {products.map((product) => 
-            <li key={product._id}>
-          <Link to={"/product/" + product._id}>{product.name}</Link>
-          </li>
+        {products.map((product, idx) => (
+          <div className="product" key={idx}>
+            <ul>
+              <li><img src={"http://localhost:5000/images/" + product._id + ".jpeg"} alt={product.name + "image"} /></li>
+              <li>
+                <Link to={"/product/" + product._id}>{product.name}</Link>
+              </li>
+              <li>Stock: {product.stock}</li>
+              <li>£{(product.price / 100).toFixed(2)}</li>
+            </ul>
+          </div>
+        )
         )}
-      </ul>
     </div>
   )
 }

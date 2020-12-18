@@ -57,12 +57,12 @@ function Product() {
     }
     return (
         <div>
-            <h1> Hello i am a product</h1>
-            <h3>Requested product ID: {id}</h3>
-            <h3>Name: {product.name}</h3>
-            <h3>Stock: {product.stock}</h3>
-            <h3>Stock: £{(product.price / 100).toFixed(2)}</h3>
-            <img src={"http://localhost:5000/images/" + product._id + ".jpeg"} alt={product.name + "image"} />
+            <ul>
+                <li><img src={"http://localhost:5000/images/" + product._id + ".jpeg"} alt={product.name + "image"} /></li>
+                <li><h3>{product.name}</h3></li>
+                <li>Stock: {product.stock}</li>
+                <li> £{(product.price / 100).toFixed(2)}</li>
+            </ul>
             <AddToCartButton stock={product.stock} addToCart={(e) => handleClick}></AddToCartButton>
 
         </div>

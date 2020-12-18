@@ -17,23 +17,10 @@ import {Shop} from './components/shop/Shop';
 import Contact from './components/Contact';
 import Error from './components/Error';
 import Product from "./components/shop/Product";
+import ShoppingCart from "./components/shop/ShoppingCart";
 // import { render } from "react-dom";
 
 function App() {
-  // Axios({
-  //   method: "GET",
-  //   url: "http://localhost:5000/",
-  //   headers: {
-  //     "Content-Type": "application/json"
-  //   }
-  // }).then(res => {
-  //   console.log(res.data);
-  //   console.log(res.status);
-  // });
-    // constructor(props) {
-    //   super(props);
-    //   this.state = { products: [] };
-    // }
 
     return (
       <Router>
@@ -57,6 +44,9 @@ function App() {
             </Route>
             <Route path="/product/:id">
               <Product />
+            </Route>
+            <Route path="/shopping-cart">
+            <ShoppingCart />
             </Route>
             <Route component={Error}/>
 

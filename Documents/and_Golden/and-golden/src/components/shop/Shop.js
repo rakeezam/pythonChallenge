@@ -7,7 +7,7 @@ import {
   useParams,
   Link
 } from "react-router-dom";
-import Product from './Product';
+// import Product from './Product';
 import axios from 'axios';
 
 function Shop() {
@@ -41,9 +41,9 @@ function Shop() {
   return (
     <div>
       <ul>
-        {products.map((product) =>
-          <li key={product._id}>
-          <Link to={"/product/" + product._id}>{product.name}</Link>            
+        {products.map((product) => 
+            <li key={product._id}>
+          <Link to={"/product/" + product._id}>{product.name}</Link>
           </li>
         )}
       </ul>

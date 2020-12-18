@@ -21,7 +21,10 @@ function Header() {
             <Link to="/shop">Shop</Link>
           </li>
           <li>
-            <Link to="/contact-us">Contact</Link>
+            <Link to="/contact-us">Help & FAQs</Link>
+          </li>
+          <li>
+          <Link to="/shopping-cart">Shopping Cart</Link> 
           </li>
         </ul>
       </nav>

@@ -8,7 +8,6 @@ import {
     useParams,
     Link
 } from "react-router-dom";
-import { GetProduct } from './Shop';
 
 function AddToCartButton(props) {
     if (props.stock === 0) {
